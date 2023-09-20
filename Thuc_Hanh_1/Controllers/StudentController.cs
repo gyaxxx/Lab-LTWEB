@@ -57,8 +57,8 @@ namespace Thuc_Hanh_1.Controllers
                 }
             };
         }
-        [Route("Admin/Student/Add")]
-        [HttpGet()]
+        //[Route("Admin/Student/Add")]
+        //[HttpGet()]
         public IActionResult Create()
         {
             ViewBag.AllGenders = Enum.GetValues(typeof(Gender)).Cast<Gender>().ToList();
@@ -80,7 +80,7 @@ namespace Thuc_Hanh_1.Controllers
             return View("Index", listStudent);
         }
 
-        [Route("Admin/Student/List")]
+        //[Route("Admin/Student/List")]
         public IActionResult Index()
         {
             return View(listStudent);
