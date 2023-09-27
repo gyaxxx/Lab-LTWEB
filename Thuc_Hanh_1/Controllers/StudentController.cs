@@ -20,7 +20,8 @@ namespace Thuc_Hanh_1.Controllers
                     Gender = Gender.Male,
                     IsRegular = true,
                     Address = "A1-2018",
-                    Email = "phamA@g.com"
+                    Email = "phamA@g.com",
+                    Diem = 10
                 },
 
                 new Student()
@@ -31,7 +32,8 @@ namespace Thuc_Hanh_1.Controllers
                     Gender = Gender.Female,
                     IsRegular = true,
                     Address = "A1-2019",
-                    Email = "nguyenB@g.com"
+                    Email = "nguyenB@g.com",
+                    Diem = 9
                 },
 
                 new Student()
@@ -42,7 +44,8 @@ namespace Thuc_Hanh_1.Controllers
                     Gender = Gender.Male,
                     IsRegular = true,
                     Address = "A1-2020",
-                    Email = "hoangC@g.com"
+                    Email = "hoangC@g.com",
+                    Diem = 7
                 },
 
                 new Student()
@@ -53,7 +56,8 @@ namespace Thuc_Hanh_1.Controllers
                     Gender = Gender.Female,
                     IsRegular = true,
                     Address = "A1-2021",
-                    Email = "dangD@g.com"
+                    Email = "dangD@g.com",
+                    Diem = 2
                 }
             };
         }
@@ -75,9 +79,21 @@ namespace Thuc_Hanh_1.Controllers
         [HttpPost]
         public IActionResult Create(Student s)
         {
-            s.Id = listStudent.Last<Student>().Id + 1;
-            listStudent.Add(s);
-            return View("Index", listStudent);
+            if(ModelState.IsValid)
+            {
+                s.Id = listStudent.Last<Student>().Id + 1;
+                listStudent.Add(s);
+                return View("Index", listStudent);
+            }
+            ViewBag.AllGenders = Enum.GetValues(typeof(Gender)).Cast<Gender>().ToList();
+            ViewBag.AllBranches = new List<SelectListItem>()
+{
+            new SelectListItem { Text = "IT", Value = "1" },
+            new SelectListItem { Text = "BE", Value = "2" },
+            new SelectListItem { Text = "CE", Value = "3" },
+            new SelectListItem { Text = "EE", Value = "4" }
+            };
+            return View();
         }
 
         //[Route("Admin/Student/List")]

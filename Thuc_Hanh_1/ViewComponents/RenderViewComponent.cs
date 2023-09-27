@@ -5,7 +5,7 @@ namespace Thuc_Hanh_1.ViewComponents
 {
     public class RenderViewComponent:ViewComponent
     {
-        private List<MenuItem> MenuItems = new List<MenuItem>();
+        private List<MenuItem> MenuItems = new List<MenuItem>();                                                                                                                                                                                                                                                                                                                                                   
         public RenderViewComponent() 
         {
             MenuItems = new List<MenuItem>()
